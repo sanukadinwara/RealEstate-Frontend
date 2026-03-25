@@ -57,7 +57,7 @@ const Stats = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/analytics/public-stats');
+        const { data } = await axios.get('https://realestatelk.vercel.app/api/analytics/public-stats');
         setStats({
           properties: data.properties || 0,
           services: data.services || 0,

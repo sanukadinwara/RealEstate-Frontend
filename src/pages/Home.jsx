@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const recordVisit = async () => {
       try {
-        await axios.post('http://localhost:5000/api/analytics/visit');
+        await axios.post('https://realestatelk.vercel.app/api/analytics/visit');
       } catch (error) {
         console.log('Visit record error', error); 
       }
@@ -33,7 +33,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/properties');
+        const { data } = await axios.get('https://realestatelk.vercel.app/api/properties');
         setProperties(data.properties); 
       } catch (error) {
         console.error("Error fetching properties:", error);

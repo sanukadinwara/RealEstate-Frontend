@@ -53,7 +53,7 @@ const ServiceDetails = () => {
 
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.post(`http://localhost:5000/api/users/fav-services/${service._id}`, {}, config);
+      const { data } = await axios.post(`https://realestatelk.vercel.app/api/users/fav-services/${service._id}`, {}, config);
       
       setIsFavorite(!isFavorite); 
 
@@ -68,7 +68,7 @@ const ServiceDetails = () => {
 
   const fetchServiceDetails = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/services/${id}`);
+      const { data } = await axios.get(`https://realestatelk.vercel.app/api/services/${id}`);
       setService(data);
       setLoading(false);
     } catch (error) {
@@ -91,7 +91,7 @@ const ServiceDetails = () => {
       setReviewLoading(true);
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
       
-      await axios.post(`http://localhost:5000/api/services/${id}/reviews`, { rating, comment }, config);
+      await axios.post(`https://realestatelk.vercel.app/api/services/${id}/reviews`, { rating, comment }, config);
       
       toast.success('Review added successfully!');
       setRating(0);
@@ -124,7 +124,7 @@ const ServiceDetails = () => {
     if (result.isConfirmed) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.delete(`http://localhost:5000/api/services/${id}/reviews/${reviewId}`, config);
+        await axios.delete(`https://realestatelk.vercel.app/api/services/${id}/reviews/${reviewId}`, config);
 
         Swal.fire(
           'Deleted!',
@@ -144,7 +144,7 @@ const ServiceDetails = () => {
     e.preventDefault();
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put(`http://localhost:5000/api/services/${id}/reviews/${reviewId}`, { rating: editRating, comment: editComment }, config);
+      await axios.put(`https://realestatelk.vercel.app/api/services/${id}/reviews/${reviewId}`, { rating: editRating, comment: editComment }, config);
       toast.success('Review Updated Successfully!');
       setEditReviewId(null);
       fetchServiceDetails(); 

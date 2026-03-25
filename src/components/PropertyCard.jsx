@@ -28,7 +28,7 @@ const PropertyCard = ({ property }) => {
 
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.post(`http://localhost:5000/api/users/favorites/${property._id}`, {}, config);
+      const { data } = await axios.post(`https://realestatelk.vercel.app/api/users/favorites/${property._id}`, {}, config);
       
       setIsFavorite(!isFavorite);
       toast.success(isFavorite ? "Removed from Favorites" : "Added to Favorites");
@@ -48,7 +48,7 @@ const PropertyCard = ({ property }) => {
     if (result.isConfirmed) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.delete(`http://localhost:5000/api/properties/${property._id}`, config);
+        await axios.delete(`https://realestatelk.vercel.app/api/properties/${property._id}`, config);
         toast.success('Property Deleted Successfully!');
         window.location.reload(); 
       } catch (error) { toast.error('Failed to delete property'); }
