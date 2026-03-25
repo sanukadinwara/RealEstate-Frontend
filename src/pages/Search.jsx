@@ -32,7 +32,7 @@ const Search = () => {
       };
 
       const { data } = await axios.post(
-        'https://realestatelk.vercel.app/api/inquiries', 
+        'realestatelkbackend.vercel.app/api/inquiries', 
         inquiryData,
         config
       );
@@ -76,7 +76,7 @@ const Search = () => {
       const activeFilters = Object.fromEntries(Object.entries(filters).filter(([_, v]) => v !== ''));
       const queryString = new URLSearchParams(activeFilters).toString();
       
-      const { data } = await axios.get(`https://realestatelk.vercel.app/api/properties?${queryString}`);
+      const { data } = await axios.get(`realestatelkbackend.vercel.app/api/properties?${queryString}`);
       
       setProperties(data.properties); 
       setTotalResults(data.total);

@@ -29,7 +29,7 @@ const EditService = () => {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const { data } = await axios.get(`https://realestatelk.vercel.app/api/services/${id}`);
+        const { data } = await axios.get(`realestatelkbackend.vercel.app/api/services/${id}`);
         setName(data.name);
         setCategory(data.category);
         setDescription(data.description);
@@ -144,7 +144,7 @@ const EditService = () => {
         }))
       };
 
-      await axios.put(`https://realestatelk.vercel.app/api/services/${id}`, serviceData, config);
+      await axios.put(`realestatelkbackend.vercel.app/api/services/${id}`, serviceData, config);
       toast.success('Company Updated Successfully!');
       navigate('/construction');
     } catch (error) {

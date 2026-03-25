@@ -25,7 +25,7 @@ const MyProperties = () => {
         }
 
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.get('https://realestatelk.vercel.app/api/properties/myproperties', config);
+        const { data } = await axios.get('realestatelkbackend.vercel.app/api/properties/myproperties', config);
         
         setProperties(data);
         setLoading(false);
@@ -53,7 +53,7 @@ const MyProperties = () => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
-        await axios.delete(`https://realestatelk.vercel.app/api/properties/${id}`, config);
+        await axios.delete(`realestatelkbackend.vercel.app/api/properties/${id}`, config);
         
         setProperties(properties.filter((prop) => prop._id !== id));
         toast.success('Property deleted successfully!');
@@ -74,7 +74,7 @@ const MyProperties = () => {
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
       
-      const { data } = await axios.post(`https://realestatelk.vercel.app/api/users/favorites/${propertyId}`, {}, config);
+      const { data } = await axios.post(`realestatelkbackend.vercel.app/api/users/favorites/${propertyId}`, {}, config);
       
       setFavorites(data.favorites);
       

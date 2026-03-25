@@ -25,7 +25,7 @@ const location = useLocation();
     if (result.isConfirmed) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.delete(`https://realestatelk.vercel.app/api/services/${id}`, config);
+        await axios.delete(`realestatelkbackend.vercel.app/api/services/${id}`, config);
         toast.success('Service Deleted Successfully!');
         window.location.reload(); 
       } catch (error) { toast.error('Failed to delete service'); }
@@ -43,7 +43,7 @@ const location = useLocation();
 
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.post(`https://realestatelk.vercel.app/api/users/fav-services/${id}`, {}, config);
+      const { data } = await axios.post(`realestatelkbackend.vercel.app/api/users/fav-services/${id}`, {}, config);
       
       setFavServiceIds(data.favServices); 
       
@@ -88,7 +88,7 @@ const location = useLocation();
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const { data } = await axios.get('https://realestatelk.vercel.app/api/services');
+        const { data } = await axios.get('realestatelkbackend.vercel.app/api/services');
         setServices(data);
         setLoading(false);
       } catch (error) {

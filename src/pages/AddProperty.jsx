@@ -96,7 +96,7 @@ const AddProperty = () => {
           status: 'pending'
       };
 
-      await axios.post('https://realestatelk.vercel.app/api/properties', finalPropertyData, config);
+      await axios.post('realestatelkbackend.vercel.app/api/properties', finalPropertyData, config);
 
       setLoading(false);
       setSuccess(true);

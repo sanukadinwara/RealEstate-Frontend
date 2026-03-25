@@ -24,7 +24,7 @@ const ServiceCard = ({ service }) => {
 
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.post(`https://realestatelk.vercel.app/api/users/fav-services/${service._id}`, {}, config);
+      const { data } = await axios.post(`realestatelkbackend.vercel.app/api/users/fav-services/${service._id}`, {}, config);
       
       setIsFavorite(!isFavorite); 
       toast.success(data.message);
@@ -53,7 +53,7 @@ const ServiceCard = ({ service }) => {
     if (result.isConfirmed) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.delete(`https://realestatelk.vercel.app/api/services/${service._id}`, config);
+        await axios.delete(`realestatelkbackend.vercel.app/api/services/${service._id}`, config);
         toast.success('Service Deleted Successfully!');
         window.location.reload();
       } catch (error) { 

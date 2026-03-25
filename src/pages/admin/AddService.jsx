@@ -106,7 +106,7 @@ const AddService = () => {
         }))
       };
 
-      await axios.post('https://realestatelk.vercel.app/api/services', serviceData, config);
+      await axios.post('realestatelkbackend.vercel.app/api/services', serviceData, config);
       toast.success('Company Added Successfully!');
       navigate('/construction');
     } catch (error) {

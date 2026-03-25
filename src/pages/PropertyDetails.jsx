@@ -26,7 +26,7 @@ const PropertyDetails = () => {
 
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.post(`https://realestatelk.vercel.app/api/users/favorites/${id}`, {}, config);
+      const { data } = await axios.post(`realestatelkbackend.vercel.app/api/users/favorites/${id}`, {}, config);
       
       setIsFavorite(!isFavorite);
       toast.success(isFavorite ? "Removed from Favorites" : "Added to Favorites");
@@ -41,7 +41,7 @@ const PropertyDetails = () => {
   useEffect(() => {
     const fetchProperty = async () => {
       try {
-        const { data } = await axios.get(`https://realestatelk.vercel.app/api/properties/${id}`);
+        const { data } = await axios.get(`realestatelkbackend.vercel.app/api/properties/${id}`);
         setProperty(data);
         setLoading(false);
       } catch (error) {

@@ -42,7 +42,7 @@ const ProfileSettings = () => {
       };
 
       const { data } = await axios.put(
-        'https://realestatelk.vercel.app/api/users/profile',
+        'realestatelkbackend.vercel.app/api/users/profile',
         { name, email, password },
         config
       );

@@ -23,7 +23,7 @@ const Testimonials = () => {
 
   const fetchReviews = async () => {
     try {
-      const { data } = await axios.get('https://realestatelk.vercel.app/api/sitereviews');
+      const { data } = await axios.get('realestatelkbackend.vercel.app/api/sitereviews');
       setReviews(data);
       setLoading(false);
     } catch (error) {
@@ -45,7 +45,7 @@ const Testimonials = () => {
     try {
       setSubmitLoading(true);
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.post('https://realestatelk.vercel.app/api/sitereviews', { rating, comment }, config);
+      await axios.post('realestatelkbackend.vercel.app/api/sitereviews', { rating, comment }, config);
       
       toast.success('Thank you for your review!');
       setRating(0);
@@ -73,7 +73,7 @@ const Testimonials = () => {
     if (result.isConfirmed) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.delete(`https://realestatelk.vercel.app/api/sitereviews/${reviewId}`, config);
+        await axios.delete(`realestatelkbackend.vercel.app/api/sitereviews/${reviewId}`, config);
         Swal.fire('Deleted!', 'Your review has been removed.', 'success');
         fetchReviews(); 
       } catch (error) {
@@ -86,7 +86,7 @@ const Testimonials = () => {
     e.preventDefault();
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put(`https://realestatelk.vercel.app/api/sitereviews/${reviewId}`, { rating: editRating, comment: editComment }, config);
+      await axios.put(`realestatelkbackend.vercel.app/api/sitereviews/${reviewId}`, { rating: editRating, comment: editComment }, config);
       toast.success('Review Updated Successfully!');
       setEditReviewId(null);
       fetchReviews(); 
