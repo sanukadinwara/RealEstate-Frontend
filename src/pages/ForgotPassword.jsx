@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post('realestatelkbackend.vercel.app/api/users/forgotpassword', { email });
+      const { data } = await axios.post('https://realestatelkbackend.vercel.app/api/users/forgotpassword', { email });
       
       toast.success(data.message || 'Email sent successfully! Check your inbox.');
       setEmail('');

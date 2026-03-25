@@ -17,7 +17,7 @@ const FavoritesScreen = () => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
         
-        const { data } = await axios.get('realestatelkbackend.vercel.app/api/users/favorites', config);
+        const { data } = await axios.get('https://realestatelkbackend.vercel.app/api/users/favorites', config);
 
         console.log("BACKEND DATA:", data);
         

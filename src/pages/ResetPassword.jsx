@@ -22,7 +22,7 @@ const ResetPassword = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.put(`realestatelkbackend.vercel.app/api/users/resetpassword/${token}`, { password });
+      const { data } = await axios.put(`https://realestatelkbackend.vercel.app/api/users/resetpassword/${token}`, { password });
       
       toast.success(data.message || 'Password reset successful! You can now login.');
       setLoading(false);

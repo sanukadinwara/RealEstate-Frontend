@@ -19,7 +19,7 @@ const AllReviews = () => {
 
   const fetchReviews = async () => {
     try {
-      const { data } = await axios.get('realestatelkbackend.vercel.app/api/sitereviews');
+      const { data } = await axios.get('https://realestatelkbackend.vercel.app/api/sitereviews');
       setReviews(data);
       setLoading(false);
     } catch (error) {
@@ -46,7 +46,7 @@ const AllReviews = () => {
     if (result.isConfirmed) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.delete(`realestatelkbackend.vercel.app/api/sitereviews/${reviewId}`, config);
+        await axios.delete(`https://realestatelkbackend.vercel.app/api/sitereviews/${reviewId}`, config);
         Swal.fire('Deleted!', 'Review has been removed.', 'success');
         fetchReviews(); 
       } catch (error) {
@@ -59,7 +59,7 @@ const AllReviews = () => {
     e.preventDefault();
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put(`realestatelkbackend.vercel.app/api/sitereviews/${reviewId}`, { rating: editRating, comment: editComment }, config);
+      await axios.put(`https://realestatelkbackend.vercel.app/api/sitereviews/${reviewId}`, { rating: editRating, comment: editComment }, config);
       toast.success('Review Updated Successfully!');
       setEditReviewId(null);
       fetchReviews(); 

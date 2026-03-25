@@ -38,7 +38,7 @@ const EditProperty = () => {
 
     const fetchProperty = async () => {
       try {
-        const { data } = await axios.get(`realestatelkbackend.vercel.app/api/properties/${id}`);
+        const { data } = await axios.get(`https://realestatelkbackend.vercel.app/api/properties/${id}`);
         
         const locationParts = data.location ? data.location.split(', ') : ['', ''];
         const town = locationParts[0] || '';
@@ -134,7 +134,7 @@ const EditProperty = () => {
           status: 'pending' 
       };
 
-      await axios.put(`realestatelkbackend.vercel.app/api/properties/${id}`, finalPropertyData, config);
+      await axios.put(`https://realestatelkbackend.vercel.app/api/properties/${id}`, finalPropertyData, config);
 
       setLoading(false);
       setSuccess(true);

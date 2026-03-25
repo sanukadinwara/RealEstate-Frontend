@@ -19,7 +19,7 @@ const Contact = () => {
 
     try {
       setLoading(true);
-      await axios.post('realestatelkbackend.vercel.app/api/inquiries', formData);
+      await axios.post('https://realestatelkbackend.vercel.app/api/inquiries', formData);
       
       toast.success('Message sent successfully! Our admin will contact you soon.');
       setFormData({ name: '', contact: '', requirements: '' }); 

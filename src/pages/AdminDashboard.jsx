@@ -31,9 +31,9 @@ const AdminDashboard = () => {
         };
 
         const [inqRes, propRes, statsRes] = await Promise.all([
-          axios.get('realestatelkbackend.vercel.app/api/inquiries', config).catch(() => ({ data: [] })),
-          axios.get('realestatelkbackend.vercel.app/api/properties/pending', config).catch(() => ({ data: [] })),
-          axios.get('realestatelkbackend.vercel.app/api/analytics/stats', config).catch(() => ({ data: { totalTraffic: 0, todayTraffic: 0 } }))
+          axios.get('https://realestatelkbackend.vercel.app/api/inquiries', config).catch(() => ({ data: [] })),
+          axios.get('https://realestatelkbackend.vercel.app/api/properties/pending', config).catch(() => ({ data: [] })),
+          axios.get('https://realestatelkbackend.vercel.app/api/analytics/stats', config).catch(() => ({ data: { totalTraffic: 0, todayTraffic: 0 } }))
         ]);
 
         setInquiries(inqRes.data);
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
         },
       };
 
-      await axios.put(`realestatelkbackend.vercel.app/api/inquiries/${id}/status`, { status: newStatus }, config);
+      await axios.put(`https://realestatelkbackend.vercel.app/api/inquiries/${id}/status`, { status: newStatus }, config);
 
       setInquiries(inquiries.map((inq) => 
         inq._id === id ? { ...inq, status: newStatus } : inq
@@ -87,7 +87,7 @@ const AdminDashboard = () => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
-        await axios.delete(`realestatelkbackend.vercel.app/api/inquiries/${id}`, config);
+        await axios.delete(`https://realestatelkbackend.vercel.app/api/inquiries/${id}`, config);
         setInquiries(inquiries.filter((inq) => inq._id !== id));
         
         toast.success('Inquiry deleted successfully!');
@@ -102,7 +102,7 @@ const AdminDashboard = () => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
     
-    await axios.put(`realestatelkbackend.vercel.app/api/properties/${id}/approve`, {}, config);
+    await axios.put(`https://realestatelkbackend.vercel.app/api/properties/${id}/approve`, {}, config);
     toast.success('Property Approved!');
     
     setPendingProperties(pendingProperties.filter(prop => prop._id !== id));
@@ -127,7 +127,7 @@ const AdminDashboard = () => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
-        await axios.delete(`realestatelkbackend.vercel.app/api/properties/${id}`, config);
+        await axios.delete(`https://realestatelkbackend.vercel.app/api/properties/${id}`, config);
         
         setPendingProperties(pendingProperties.filter(prop => prop._id !== id));
         
